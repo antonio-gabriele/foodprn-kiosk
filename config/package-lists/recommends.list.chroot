@@ -1,1 +1,14 @@
-user-setup sudo
+user-setup
+sudo
+xserver-xorg
+xinit
+matchbox-window-manager
+x11-xserver-utils
+unclutter
+chromium
+network-manager
+ca-certificates
+fonts-dejavu
+fonts-liberation
+wget
+
