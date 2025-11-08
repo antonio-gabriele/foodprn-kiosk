@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+# Run in the root of the ISO tree
+rm -f boot/grub/splash.png || true
+rm -rf boot/grub/themes || true
