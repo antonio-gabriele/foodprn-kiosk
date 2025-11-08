@@ -1,22 +1,27 @@
 #!/bin/sh
+
 set -e
 
-# Power mgmt / screensaver off
 xset -dpms
 xset s off
 xset s noblank
 
-# Hide cursor after idle (optional)
 unclutter -idle 0.1 -root &
 
-# Start the minimal WM
+if command -v xrandr >/dev/null 2>&1; then
+  output="$(xrandr | awk '/ connected/{print $1; exit}')"
+  if [ -n "$output" ]; then
+    xrandr --output "$output" --mode 1920x1080 || true
+  fi
+fi
+
 matchbox-window-manager -use_titlebar no -use_cursor no &
 
-# Pick your homepage / app URL
-URL="${KIOSK_URL:-https://www.foodprn.it}"
+IFACE=$(ip -o link show | awk -F': ' '!/lo:/ && /link\/ether/ {print $2; exit}')
+MACRAW=$(cat "/sys/class/net/$IFACE/address")
+MAC=$(printf '%s' "$MACRAW" | tr -d :)
+URL="https://totem.foodprn.it/welcome/${MAC}"
 
-# Launch Chromium (kiosk)
-# Tip: --user-data-dir=/tmp keeps session ephemeral in RAM
 exec chromium \
   --kiosk \
   --no-first-run \

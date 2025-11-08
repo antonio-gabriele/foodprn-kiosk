@@ -1,3 +1,5 @@
+plymouth
+plymouth-themes
 user-setup
 sudo
 xserver-xorg
@@ -11,4 +13,5 @@ ca-certificates
 fonts-dejavu
 fonts-liberation
 wget
-
+iproute2
+gawk

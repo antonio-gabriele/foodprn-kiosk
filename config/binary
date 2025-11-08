@@ -10,7 +10,7 @@ LB_BINARY_FILESYSTEM="fat32"
 LB_APT_INDICES="false"
 
 # Set boot parameters
-LB_BOOTAPPEND_LIVE="boot=live components quiet splash"
+LB_BOOTAPPEND_LIVE="boot=live components timezone=Europe/Rome locales=it_IT.UTF-8 keyboard-layouts=it hostname=foodprn-totem-1 username=user noeject autologin quiet splash"
 
 # Set boot parameters
 LB_BOOTAPPEND_INSTALL=""
@@ -19,13 +19,13 @@ LB_BOOTAPPEND_INSTALL=""
 LB_BOOTAPPEND_LIVE_FAILSAFE="boot=live components memtest noapic noapm nodma nomce nosmp nosplash vga=788"
 
 # Set BIOS bootloader
-LB_BOOTLOADER_BIOS="syslinux"
+LB_BOOTLOADER_BIOS=""
 
 # Set EFI bootloader
 LB_BOOTLOADER_EFI="grub-efi"
 
 # Set bootloaders
-LB_BOOTLOADERS=""
+LB_BOOTLOADERS="grub-efi"
 
 # Set checksums
 LB_CHECKSUMS="sha256"
